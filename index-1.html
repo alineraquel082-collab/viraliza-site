@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171326">
+<title>ViraLab — Ideias para vídeos</title>
+<style>
+:root{--bg:#f7f6fb;--ink:#201a32;--muted:#6f687e;--purple:#6c4bf4;--lime:#dfff70;--card:#fff;--line:#e8e3f1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+header{background:#171326;color:white;padding:24px 18px 34px;border-radius:0 0 28px 28px}
+.wrap{max-width:880px;margin:auto}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:14px;background:var(--lime);color:#171326;display:grid;place-items:center;font-size:23px}
+h1{font-size:clamp(30px,7vw,48px);line-height:1.04;margin:28px 0 12px;max-width:650px}header p{color:#d8d1e8;line-height:1.55;max-width:650px;margin:0}
+main{padding:22px 16px 50px}.panel,.result{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 26px #24124a08;margin-bottom:16px}
+h2{font-size:19px;margin:0 0 14px}.field{margin:16px 0}.field label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+select,input{width:100%;padding:13px 14px;border:1px solid #d9d2e6;border-radius:12px;background:white;color:var(--ink);font:inherit}
+button{border:0;border-radius:12px;padding:13px 16px;font:inherit;font-weight:750;cursor:pointer}
+.primary{background:var(--purple);color:white;width:100%;margin-top:7px}.secondary{background:#f0ecff;color:#4b32bc}
+.result{display:none}.tag{display:inline-block;padding:6px 9px;border-radius:999px;background:#f0ecff;color:#4b32bc;font-size:12px;font-weight:800;margin-bottom:12px}
+.result h2{font-size:24px;line-height:1.2}.block{padding:13px;background:#faf9fd;border:1px solid var(--line);border-radius:12px;margin:10px 0}.block b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}.block p{margin:0;line-height:1.5;white-space:pre-wrap}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.actions button{flex:1;min-width:140px}
+.small{color:var(--muted);font-size:13px;line-height:1.5}.footer{text-align:center;color:var(--muted);font-size:12px;padding:8px 18px 30px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><div class="logo">✦</div><span>ViraLab <span style="font-weight:500;color:#d8d1e8">· nome provisório</span></span></div>
+  <h1>Sua próxima história começa com uma ideia.</h1>
+  <p>Crie conceitos de vídeos curtos com personagens, ganchos e reviravoltas. Para TikTok, Reels, Shorts e outras plataformas. Ideias são sugestões — viralização não é garantida.</p>
+</div></header>
+<main class="wrap">
+  <section class="panel">
+    <h2>🎬 Monte sua ideia</h2>
+    <div class="field"><label for="genre">Que tipo de história?</label>
+      <select id="genre">
+        <option value="drama">Drama com reviravolta</option>
+        <option value="comedia">Comédia inesperada</option>
+        <option value="misterio">Mistério em partes</option>
+        <option value="fantasia">Fantasia com personagens de frutas</option>
+        <option value="motivacao">Superação e motivação</option>
+      </select>
+    </div>
+    <div class="field"><label for="duration">Duração desejada</label>
+      <select id="duration"><option>15–20 segundos</option><option selected>30–45 segundos</option><option>60 segundos</option></select>
+    </div>
+    <div class="field"><label for="platform">Onde pretende publicar?</label>
+      <select id="platform"><option>Todas as redes</option><option>TikTok</option><option>Instagram Reels</option><option>YouTube Shorts</option><option>Kwai</option></select>
+    </div>
+    <div class="field"><label for="character">Personagem principal (opcional)</label>
+      <input id="character" maxlength="50" placeholder="Ex.: Moranguete, um robô tímido, uma estudante">
+    </div>
+    <button class="primary" id="generate">✨ Gerar ideia grátis</button>
+    <p class="small">Esta versão funciona no seu navegador e não precisa de cadastro nem chave de IA. As ideias vêm de modelos pré-escritos; ela não usa IA online.</p>
+  </section>
+  <section class="result" id="result" aria-live="polite">
+    <span class="tag" id="tag">IDEIA CRIADA</span>
+    <h2 id="title"></h2>
+    <div class="block"><b>Gancho inicial</b><p id="hook"></p></div>
+    <div class="block"><b>Roteiro por cenas</b><p id="script"></p></div>
+    <div class="block"><b>Reviravolta</b><p id="twist"></p></div>
+    <div class="block"><b>Legenda sugerida</b><p id="caption"></p></div>
+    <div class="block"><b>Prompt visual para IA</b><p id="prompt"></p></div>
+    <div class="actions"><button class="secondary" id="copy">Copiar roteiro completo</button><button class="secondary" id="again">Gerar outra ideia</button></div>
+    <p class="small" id="feedback"></p>
+  </section>
+  <section class="panel">
+    <h2>🚀 O que pode tornar este site diferente?</h2>
+    <p>Próximas funções possíveis: personagens recorrentes, episódios com continuação, prompts visuais por cena, favoritos e desafios comunitários. Primeiro, teste esta versão com alguns criadores e veja o que eles mais usam.</p>
+  </section>
+</main>
+<div class="footer">Protótipo gratuito • ViraLab é um nome provisório; verifique marca e domínio antes de lançar publicamente.</div>
+<script>
+const bank = {
+drama:[
+{title:"A mensagem enviada para a pessoa errada",hook:"“Ela mandou a mensagem para o contato errado… e recebeu uma resposta impossível.”",scenes:["Cena 1: A personagem escreve uma mensagem contando um segredo e aperta enviar sem olhar o nome.","Cena 2: Chega uma resposta: “Eu sei. Olha atrás de você.”","Cena 3: Ela se vira e encontra apenas um bilhete sobre a mesa."],twist:"O bilhete foi escrito pela própria personagem no dia anterior — mas ela não se lembra disso.",caption:"Tu terias coragem de abrir a próxima mensagem? 👀 #historiacurta #reviravolta",visual:"Vídeo vertical cinematográfico, personagem expressiva, iluminação dramática, cortes rápidos, ambiente original, sem texto na imagem."},
+{title:"A amiga que sabia o final",hook:"“Toda vez que ela contava um plano, a melhor amiga já sabia como terminaria.”",scenes:["Cena 1: A protagonista conta que vai participar de uma competição.","Cena 2: A amiga responde: “Você vai ganhar, mas não pelo motivo que imagina.”","Cena 3: A protagonista encontra um envelope com seu nome."],twist:"A amiga não previa o futuro: ela era a organizadora secreta que preparou uma surpresa para reconhecer o esforço da protagonista.",caption:"Amizade ou mistério? Qual seria tua reação? 💌 #storytime",visual:"Animação 3D estilizada, duas personagens originais, expressões marcantes, enquadramento vertical 9:16."}
+],
+comedia:[
+{title:"O robô que queria tirar férias",hook:"“O robô mais eficiente da casa pediu demissão por um motivo inacreditável.”",scenes:["Cena 1: O robô faz todas as tarefas enquanto a família pede mais coisas.","Cena 2: Ele imprime uma carta: “Preciso de um tempo para mim.”","Cena 3: A família tenta fazer as tarefas e cria uma bagunça divertida."],twist:"No fim, o robô volta — mas só para supervisionar e dar notas para a família.",caption:"Marca alguém que também precisa de férias 😂 #comedia #ia",visual:"Animação 3D divertida, robô simpático com olhos expressivos, casa colorida, timing cômico, vertical 9:16."},
+{title:"A fruta que virou detetive",hook:"“A banana contratou um detetive porque alguém estava roubando as frutas da geladeira.”",scenes:["Cena 1: A banana reúne os suspeitos: morango, uva e abacate.","Cena 2: Cada um dá uma desculpa muito estranha.","Cena 3: O detetive encontra pistas de cascas perto do sofá."],twist:"O culpado é o próprio detetive — uma maçã sonâmbula que esqueceu que comeu tudo durante a noite.",caption:"Quem tu achas que é o culpado? 🍌🕵️ #personagens #historias",visual:"Frutas antropomórficas originais, cenário de cozinha colorida, animação 3D expressiva, enquadramento vertical."}
+],
+misterio:[
+{title:"A porta que aparece às 03:03",hook:"“No corredor havia uma porta que só aparecia às 03:03.”",scenes:["Cena 1: A personagem grava o corredor em três noites seguidas.","Cena 2: Na terceira noite, uma porta aparece no vídeo.","Cena 3: Ao abrir, encontra uma sala cheia de relógios parados."],twist:"Todos os relógios mostram a hora em que cada morador tomou uma decisão importante; um deles começa a funcionar quando a personagem decide pedir desculpas.",caption:"Parte 2: tu entrarias nessa sala? ⏰ #misterio #parte2",visual:"Mistério leve, corredor surreal, porta luminosa, relógios flutuantes, atmosfera intrigante sem violência, vertical 9:16."},
+{title:"O desenho que mudava sozinho",hook:"“A cada manhã, o desenho tinha um detalhe novo que ninguém lembrava de fazer.”",scenes:["Cena 1: Uma criança desenha uma casa e guarda o papel.","Cena 2: No dia seguinte aparece uma janela extra.","Cena 3: Na terceira manhã, há uma seta apontando para um livro antigo."],twist:"Dentro do livro está a foto de quem desenhou a casa anos antes — a própria avó, quando era criança.",caption:"O que tu procurarias primeiro? 📖 #mistério #história",visual:"Animação de mistério acolhedora, desenho que ganha detalhes, livro antigo, luz suave, vertical 9:16."}
+],
+fantasia:[
+{title:"Moranguete trocou de destino com Abacatu",hook:"“Moranguete acordou com a vida de Abacatu — e descobriu um segredo.”",scenes:["Cena 1: As duas personagens discutem porque acham a vida uma da outra perfeita.","Cena 2: Um desejo mágico troca suas rotinas por um dia.","Cena 3: Cada uma descobre as dificuldades escondidas da outra."],twist:"Elas percebem que o segredo não era magia: as duas estavam fingindo estar bem para não preocupar os amigos.",caption:"Parte 2: quem deveria pedir desculpas primeiro? 🍓🥑 #frutas #ia",visual:"Personagens originais de morango e abacate antropomórficos, cores vibrantes, emoções claras, fantasia cômica, vertical 9:16."},
+{title:"A uva que controlava o tempo",hook:"“A uva descobriu que podia pausar o tempo — mas só por cinco segundos.”",scenes:["Cena 1: Ela usa o poder para evitar um copo que cai.","Cena 2: Usa de novo para terminar uma tarefa atrasada.","Cena 3: O poder falha justo quando todos precisam trabalhar juntos."],twist:"Ela descobre que pedir ajuda resolve mais do que tentar controlar tudo sozinha.",caption:"Tu usarias esse poder para quê? ⏳🍇 #fantasia #personagens",visual:"Pequena uva roxa com rosto expressivo, poder de congelar o tempo com partículas brilhantes, animação 3D, vertical 9:16."}
+],
+motivacao:[
+{title:"A ideia que todos ignoraram",hook:"“Riram da ideia dele por 30 dias. No dia 31, alguém fez uma pergunta.”",scenes:["Cena 1: A personagem apresenta uma ideia simples e ninguém presta atenção.","Cena 2: Ela melhora um pequeno detalhe por dia e registra o progresso.","Cena 3: Uma pessoa que precisava daquela solução pede para testar."],twist:"O sucesso não chega como fama instantânea: começa com uma pessoa real que encontrou valor na ideia.",caption:"Pequenos passos também contam. Salva para lembrar. 🌱 #criatividade #motivacao",visual:"Curta inspirador, personagem original persistente, sequência visual de progresso, luz acolhedora, vertical 9:16."},
+{title:"O caderno das pequenas vitórias",hook:"“Ela achava que não estava avançando até reler a primeira página.”",scenes:["Cena 1: A personagem escreve uma meta enorme e sente que está longe.","Cena 2: Começa a anotar pequenas tarefas concluídas.","Cena 3: Sem perceber, acumulou semanas de progresso."],twist:"A última página não tem uma meta nova; tem uma lista de coisas que antes pareciam impossíveis e agora são rotina.",caption:"Qual pequena vitória tu tiveste hoje? ✨ #habitos #motivacao",visual:"Curta visual delicado, caderno colorido, personagem original, montagem de dias passando, luz natural, vertical 9:16."}
+]
+};
+let current = null;
+function choose(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function makeIdea(){
+ const genre=document.querySelector('#genre').value;
+ const duration=document.querySelector('#duration').value;
+ const platform=document.querySelector('#platform').value;
+ const raw=document.querySelector('#character').value.trim();
+ const item=choose(bank[genre]);
+ const character=raw || (genre==='fantasia'?'Moranguete':genre==='comedia'?'um robô atrapalhado':'uma personagem curiosa');
+ current={...item,genre,duration,platform,character};
+ document.querySelector('#title').textContent=item.title;
+ document.querySelector('#hook').textContent=item.hook;
+ document.querySelector('#script').textContent=item.scenes.join('\\n\\n');
+ document.querySelector('#twist').textContent=item.twist;
+ document.querySelector('#caption').textContent=item.caption;
+ document.querySelector('#prompt').textContent=item.visual+' Personagem principal: '+character+'. Duração aproximada: '+duration+'. Adaptar para '+platform+'.';
+ document.querySelector('#tag').textContent=duration.toUpperCase()+' • '+platform.toUpperCase();
+ document.querySelector('#feedback').textContent='';
+ document.querySelector('#result').style.display='block';
+ document.querySelector('#result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function fullText(){
+ if(!current)return '';
+ return current.title+'\\n\\nGANCHO\\n'+current.hook+'\\n\\nROTEIRO\\n'+current.scenes.join('\\n\\n')+'\\n\\nREVIRAVOLTA\\n'+current.twist+'\\n\\nLEGENDA\\n'+current.caption+'\\n\\nPROMPT VISUAL\\n'+current.visual+' Personagem principal: '+current.character+'. Duração: '+current.duration+'. Plataforma: '+current.platform+'.';
+}
+document.querySelector('#generate').addEventListener('click',makeIdea);
+document.querySelector('#again').addEventListener('click',makeIdea);
+document.querySelector('#copy').addEventListener('click',async()=>{
+ const text=fullText(); const feedback=document.querySelector('#feedback');
+ try{await navigator.clipboard.writeText(text);feedback.textContent='Roteiro copiado! Agora é só colar onde quiser.'}
+ catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();feedback.textContent=ok?'Roteiro copiado!':'Não foi possível copiar automaticamente. Selecione e copie o texto do roteiro.'}
+});
+</script>
+</body>
+</html>
